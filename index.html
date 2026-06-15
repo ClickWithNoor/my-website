@@ -2,49 +2,73 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Smart Tools Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Tools Hub - Free Online Tools</title>
 
   <style>
     body{
       font-family: Arial;
       margin:0;
-      background:#f2f2f2;
-      text-align:center;
+      background:#f4f4f4;
     }
 
     header{
-      background:#111;
+      background: linear-gradient(90deg,#111,#333);
       color:white;
-      padding:20px;
+      text-align:center;
+      padding:25px;
     }
 
-    .box{
+    header h1{
+      margin:0;
+      font-size:28px;
+    }
+
+    header p{
+      margin:5px;
+      color:#ddd;
+    }
+
+    .container{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin-top:20px;
+    }
+
+    .card{
       background:white;
-      width:320px;
-      margin:20px auto;
+      width:260px;
+      margin:15px;
       padding:20px;
-      border-radius:10px;
+      border-radius:12px;
       box-shadow:0 0 10px #ccc;
+      text-align:center;
+      transition:0.3s;
     }
 
-    input, button{
-      padding:10px;
-      margin:8px;
-      width:85%;
+    .card:hover{
+      transform:scale(1.05);
     }
 
     button{
       background:#111;
       color:white;
       border:none;
+      padding:10px;
+      width:80%;
+      border-radius:5px;
       cursor:pointer;
-    }
-
-    .result{
-      font-weight:bold;
       margin-top:10px;
     }
 
+    footer{
+      text-align:center;
+      padding:15px;
+      background:#111;
+      color:white;
+      margin-top:30px;
+    }
   </style>
 </head>
 
@@ -52,75 +76,80 @@
 
 <header>
   <h1>🔥 Smart Tools Hub</h1>
-  <p>All Free Online Tools in One Place</p>
+  <p>Free Online Tools for Students & Daily Use</p>
 </header>
 
-<!-- AGE CALCULATOR -->
-<div class="box">
-  <h2>Age Calculator</h2>
+<div class="container">
+
+  <div class="card">
+    <h3>Age Calculator</h3>
+    <p>Find your exact age easily</p>
+    <button onclick="location.href='#age'">Open</button>
+  </div>
+
+  <div class="card">
+    <h3>Percentage Calculator</h3>
+    <p>Calculate marks percentage</p>
+    <button onclick="location.href='#percent'">Open</button>
+  </div>
+
+  <div class="card">
+    <h3>BMI Calculator</h3>
+    <p>Check your body health</p>
+    <button onclick="location.href='#bmi'">Open</button>
+  </div>
+
+</div>
+
+<!-- TOOLS -->
+
+<div id="age" class="card">
+  <h3>Age Calculator</h3>
   <input type="date" id="dob">
-  <button onclick="ageCalc()">Calculate Age</button>
-  <div class="result" id="ageResult"></div>
+  <button onclick="calcAge()">Calculate</button>
+  <h3 id="ageResult"></h3>
 </div>
 
-<!-- PERCENTAGE CALCULATOR -->
-<div class="box">
-  <h2>Percentage Calculator</h2>
-  <input type="number" id="marks" placeholder="Obtained Marks">
-  <input type="number" id="total" placeholder="Total Marks">
-  <button onclick="percentCalc()">Calculate %</button>
-  <div class="result" id="percentResult"></div>
+<div id="percent" class="card">
+  <h3>Percentage Calculator</h3>
+  <input type="number" id="marks" placeholder="Marks">
+  <input type="number" id="total" placeholder="Total">
+  <button onclick="calcPercent()">Calculate</button>
+  <h3 id="percentResult"></h3>
 </div>
 
-<!-- BMI CALCULATOR -->
-<div class="box">
-  <h2>BMI Calculator</h2>
+<div id="bmi" class="card">
+  <h3>BMI Calculator</h3>
   <input type="number" id="weight" placeholder="Weight (kg)">
   <input type="number" id="height" placeholder="Height (cm)">
-  <button onclick="bmiCalc()">Calculate BMI</button>
-  <div class="result" id="bmiResult"></div>
+  <button onclick="calcBMI()">Calculate</button>
+  <h3 id="bmiResult"></h3>
 </div>
 
-<script>
+<footer>
+  © 2026 Smart Tools Hub | All Rights Reserved
+</footer>
 
-function ageCalc(){
+<script>
+function calcAge(){
   let dob = document.getElementById("dob").value;
-  if(!dob){
-    document.getElementById("ageResult").innerHTML="Select date!";
-    return;
-  }
-  let birth = new Date(dob);
-  let today = new Date();
-  let age = today.getFullYear() - birth.getFullYear();
-  document.getElementById("ageResult").innerHTML="Age: "+age+" years";
+  let age = new Date().getFullYear() - new Date(dob).getFullYear();
+  document.getElementById("ageResult").innerText = "Age: " + age;
 }
 
-function percentCalc(){
+function calcPercent(){
   let m = document.getElementById("marks").value;
   let t = document.getElementById("total").value;
-
-  if(!m || !t){
-    document.getElementById("percentResult").innerHTML="Enter values!";
-    return;
-  }
-
-  let percent = (m/t)*100;
-  document.getElementById("percentResult").innerHTML="Percentage: "+percent.toFixed(2)+"%";
+  let p = (m/t)*100;
+  document.getElementById("percentResult").innerText = p.toFixed(2) + "%";
 }
 
-function bmiCalc(){
+function calcBMI(){
   let w = document.getElementById("weight").value;
-  let h = document.getElementById("height").value;
-
-  if(!w || !h){
-    document.getElementById("bmiResult").innerHTML="Enter values!";
-    return;
-  }
-
-  let bmi = w / ((h/100)*(h/100));
-  document.getElementById("bmiResult").innerHTML="BMI: "+bmi.toFixed(2);
+  let h = document.getElementById("height").value/100;
+  let bmi = w/(h*h);
+  document.getElementById("bmiResult").innerText = bmi.toFixed(2);
 }
-
 </script>
 
 </body>
