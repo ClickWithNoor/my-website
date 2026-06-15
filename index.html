@@ -1,155 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart Tools Hub - Free Online Tools</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Tools Hub</title>
 
-  <style>
-    body{
-      font-family: Arial;
-      margin:0;
-      background:#f4f4f4;
-    }
+<style>
+body{
+  font-family: Arial;
+  margin:0;
+  background:#f4f4f4;
+}
 
-    header{
-      background: linear-gradient(90deg,#111,#333);
-      color:white;
-      text-align:center;
-      padding:25px;
-    }
+header{
+  background:#111;
+  color:white;
+  text-align:center;
+  padding:20px;
+}
 
-    header h1{
-      margin:0;
-      font-size:28px;
-    }
+header p{
+  color:#ccc;
+}
 
-    header p{
-      margin:5px;
-      color:#ddd;
-    }
+.container{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  margin-top:20px;
+}
 
-    .container{
-      display:flex;
-      flex-wrap:wrap;
-      justify-content:center;
-      margin-top:20px;
-    }
+.card{
+  background:white;
+  width:280px;
+  margin:15px;
+  padding:20px;
+  border-radius:10px;
+  box-shadow:0 0 10px #ccc;
+}
 
-    .card{
-      background:white;
-      width:260px;
-      margin:15px;
-      padding:20px;
-      border-radius:12px;
-      box-shadow:0 0 10px #ccc;
-      text-align:center;
-      transition:0.3s;
-    }
+input, button{
+  width:90%;
+  padding:10px;
+  margin:8px 0;
+}
 
-    .card:hover{
-      transform:scale(1.05);
-    }
+button{
+  background:#111;
+  color:white;
+  border:none;
+  cursor:pointer;
+}
 
-    button{
-      background:#111;
-      color:white;
-      border:none;
-      padding:10px;
-      width:80%;
-      border-radius:5px;
-      cursor:pointer;
-      margin-top:10px;
-    }
+footer{
+  text-align:center;
+  background:#111;
+  color:white;
+  padding:15px;
+  margin-top:30px;
+}
+</style>
 
-    footer{
-      text-align:center;
-      padding:15px;
-      background:#111;
-      color:white;
-      margin-top:30px;
-    }
-  </style>
 </head>
 
 <body>
 
 <header>
   <h1>🔥 Smart Tools Hub</h1>
-  <p>Free Online Tools for Students & Daily Use</p>
+  <p>Free Online Tools for Everyone</p>
 </header>
 
 <div class="container">
 
-  <div class="card">
-    <h3>Age Calculator</h3>
-    <p>Find your exact age easily</p>
-    <button onclick="location.href='#age'">Open</button>
-  </div>
-
-  <div class="card">
-    <h3>Percentage Calculator</h3>
-    <p>Calculate marks percentage</p>
-    <button onclick="location.href='#percent'">Open</button>
-  </div>
-
-  <div class="card">
-    <h3>BMI Calculator</h3>
-    <p>Check your body health</p>
-    <button onclick="location.href='#bmi'">Open</button>
-  </div>
-
+<!-- AGE -->
+<div class="card">
+<h3>Age Calculator</h3>
+<input type="date" id="dob">
+<button onclick="age()">Calculate</button>
+<h3 id="ageResult"></h3>
 </div>
 
-<!-- TOOLS -->
-
-<div id="age" class="card">
-  <h3>Age Calculator</h3>
-  <input type="date" id="dob">
-  <button onclick="calcAge()">Calculate</button>
-  <h3 id="ageResult"></h3>
+<!-- PERCENT -->
+<div class="card">
+<h3>Percentage Calculator</h3>
+<input type="number" id="marks" placeholder="Obtained Marks">
+<input type="number" id="total" placeholder="Total Marks">
+<button onclick="percent()">Calculate</button>
+<h3 id="percentResult"></h3>
 </div>
 
-<div id="percent" class="card">
-  <h3>Percentage Calculator</h3>
-  <input type="number" id="marks" placeholder="Marks">
-  <input type="number" id="total" placeholder="Total">
-  <button onclick="calcPercent()">Calculate</button>
-  <h3 id="percentResult"></h3>
+<!-- BMI -->
+<div class="card">
+<h3>BMI Calculator</h3>
+<input type="number" id="weight" placeholder="Weight (kg)">
+<input type="number" id="height" placeholder="Height (cm)">
+<button onclick="bmi()">Calculate</button>
+<h3 id="bmiResult"></h3>
 </div>
 
-<div id="bmi" class="card">
-  <h3>BMI Calculator</h3>
-  <input type="number" id="weight" placeholder="Weight (kg)">
-  <input type="number" id="height" placeholder="Height (cm)">
-  <button onclick="calcBMI()">Calculate</button>
-  <h3 id="bmiResult"></h3>
 </div>
 
 <footer>
-  © 2026 Smart Tools Hub | All Rights Reserved
+© 2026 Smart Tools Hub | All Rights Reserved
 </footer>
 
 <script>
-function calcAge(){
-  let dob = document.getElementById("dob").value;
-  let age = new Date().getFullYear() - new Date(dob).getFullYear();
-  document.getElementById("ageResult").innerText = "Age: " + age;
+
+function age(){
+let dob=document.getElementById("dob").value;
+if(!dob)return;
+let a=new Date().getFullYear()-new Date(dob).getFullYear();
+document.getElementById("ageResult").innerText=a+" years";
 }
 
-function calcPercent(){
-  let m = document.getElementById("marks").value;
-  let t = document.getElementById("total").value;
-  let p = (m/t)*100;
-  document.getElementById("percentResult").innerText = p.toFixed(2) + "%";
+function percent(){
+let m=document.getElementById("marks").value;
+let t=document.getElementById("total").value;
+let p=(m/t)*100;
+document.getElementById("percentResult").innerText=p.toFixed(2)+"%";
 }
 
-function calcBMI(){
-  let w = document.getElementById("weight").value;
-  let h = document.getElementById("height").value/100;
-  let bmi = w/(h*h);
-  document.getElementById("bmiResult").innerText = bmi.toFixed(2);
+function bmi(){
+let w=document.getElementById("weight").value;
+let h=document.getElementById("height").value/100;
+let b=w/(h*h);
+document.getElementById("bmiResult").innerText=b.toFixed(2);
 }
+
 </script>
 
 </body>
