@@ -3,131 +3,134 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Smart Tools Hub</title>
+<title>Smart Tools Hub - Free Online Tools</title>
+
+<meta name="description" content="Free online tools: Age Calculator, BMI Calculator, Percentage Calculator, Loan, EMI, Unit Converter and more.">
+<meta name="keywords" content="online tools, calculator, age calculator, bmi calculator, percentage calculator, loan calculator">
 
 <style>
-body{
-  font-family: Arial;
-  margin:0;
-  background:#f4f4f4;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f4f4f4;
 }
 
-header{
-  background:#111;
-  color:white;
-  text-align:center;
-  padding:20px;
+header {
+    background: #111;
+    color: white;
+    padding: 20px;
+    text-align: center;
 }
 
-header p{
-  color:#ccc;
+h1 {
+    margin: 0;
 }
 
-.container{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  margin-top:20px;
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
 }
 
-.card{
-  background:white;
-  width:280px;
-  margin:15px;
-  padding:20px;
-  border-radius:10px;
-  box-shadow:0 0 10px #ccc;
+.card {
+    background: white;
+    width: 250px;
+    margin: 15px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-input, button{
-  width:90%;
-  padding:10px;
-  margin:8px 0;
+button {
+    padding: 10px 15px;
+    margin-top: 10px;
+    border: none;
+    background: #111;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
-button{
-  background:#111;
-  color:white;
-  border:none;
-  cursor:pointer;
+button:hover {
+    background: #333;
 }
 
-footer{
-  text-align:center;
-  background:#111;
-  color:white;
-  padding:15px;
-  margin-top:30px;
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #111;
+    color: white;
+    margin-top: 20px;
 }
 </style>
 
 </head>
-
 <body>
 
 <header>
-  <h1>🔥 Smart Tools Hub</h1>
-  <p>Free Online Tools for Everyone</p>
+    <h1>🔥 Smart Tools Hub</h1>
+    <p>Free Online Tools for Everyone</p>
 </header>
 
 <div class="container">
 
-<!-- AGE -->
 <div class="card">
 <h3>Age Calculator</h3>
-<input type="date" id="dob">
-<button onclick="age()">Calculate</button>
-<h3 id="ageResult"></h3>
+<button onclick="alert('Coming Soon')">Open</button>
 </div>
 
-<!-- PERCENT -->
-<div class="card">
-<h3>Percentage Calculator</h3>
-<input type="number" id="marks" placeholder="Obtained Marks">
-<input type="number" id="total" placeholder="Total Marks">
-<button onclick="percent()">Calculate</button>
-<h3 id="percentResult"></h3>
-</div>
-
-<!-- BMI -->
 <div class="card">
 <h3>BMI Calculator</h3>
-<input type="number" id="weight" placeholder="Weight (kg)">
-<input type="number" id="height" placeholder="Height (cm)">
-<button onclick="bmi()">Calculate</button>
-<h3 id="bmiResult"></h3>
+<button onclick="alert('Coming Soon')">Open</button>
+</div>
+
+<div class="card">
+<h3>Percentage Calculator</h3>
+<button onclick="alert('Coming Soon')">Open</button>
+</div>
+
+<div class="card">
+<h3>Loan Calculator</h3>
+<button onclick="alert('Coming Soon')">Open</button>
+</div>
+
+<div class="card">
+<h3>EMI Calculator</h3>
+<button onclick="alert('Coming Soon')">Open</button>
+</div>
+
+<div class="card">
+<h3>Unit Converter</h3>
+<button onclick="alert('Coming Soon')">Open</button>
+</div>
+
+<div class="card">
+<h3>Discount Calculator</h3>
+<button onclick="alert('Coming Soon')">Open</button>
+</div>
+
+<div class="card">
+<h3>GST Calculator</h3>
+<button onclick="alert('Coming Soon')">Open</button>
+</div>
+
+<div class="card">
+<h3>Scientific Calculator</h3>
+<button onclick="alert('Coming Soon')">Open</button>
+</div>
+
+<div class="card">
+<h3>Password Generator</h3>
+<button onclick="alert('Coming Soon')">Open</button>
 </div>
 
 </div>
 
 <footer>
-© 2026 Smart Tools Hub | All Rights Reserved
+    © 2026 Smart Tools Hub | All Rights Reserved
 </footer>
-
-<script>
-
-function age(){
-let dob=document.getElementById("dob").value;
-if(!dob)return;
-let a=new Date().getFullYear()-new Date(dob).getFullYear();
-document.getElementById("ageResult").innerText=a+" years";
-}
-
-function percent(){
-let m=document.getElementById("marks").value;
-let t=document.getElementById("total").value;
-let p=(m/t)*100;
-document.getElementById("percentResult").innerText=p.toFixed(2)+"%";
-}
-
-function bmi(){
-let w=document.getElementById("weight").value;
-let h=document.getElementById("height").value/100;
-let b=w/(h*h);
-document.getElementById("bmiResult").innerText=b.toFixed(2);
-}
-
-</script>
 
 </body>
 </html>
