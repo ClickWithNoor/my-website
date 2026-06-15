@@ -1,66 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
   <title>Smart Tools Hub</title>
-
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background: #f2f2f2;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background: #111;
-      color: white;
-      padding: 20px;
-    }
-
-    h1 {
-      margin: 0;
-    }
-
-    p {
-      color: #555;
-    }
-
-    .container {
-      margin-top: 30px;
-    }
-
-    .box {
-      background: white;
-      display: inline-block;
-      width: 250px;
-      margin: 15px;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px #ccc;
-    }
-
-    button {
-      background: #111;
-      color: white;
-      border: none;
-      padding: 10px;
-      margin-top: 10px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-
-    button:hover {
-      background: #333;
-    }
-
-    footer {
-      margin-top: 40px;
-      padding: 20px;
-      background: #111;
-      color: white;
-    }
+    body { font-family: Arial; text-align: center; background:#f2f2f2; margin:0; }
+    header { background:#111; color:white; padding:20px; }
+    .box { background:white; width:300px; margin:20px auto; padding:20px; border-radius:10px; }
+    input, button { padding:10px; margin:10px; width:80%; }
+    button { background:#111; color:white; border:none; cursor:pointer; }
   </style>
 </head>
 
@@ -68,31 +15,33 @@
 
 <header>
   <h1>🔥 Smart Tools Hub</h1>
-  <p>Free Online Tools for Everyone</p>
+  <p>Free Online Age Calculator</p>
 </header>
 
-<div class="container">
-
-  <div class="box">
-    <h3>Age Calculator</h3>
-    <button onclick="alert('Coming Soon')">Open Tool</button>
-  </div>
-
-  <div class="box">
-    <h3>Percentage Calculator</h3>
-    <button onclick="alert('Coming Soon')">Open Tool</button>
-  </div>
-
-  <div class="box">
-    <h3>BMI Calculator</h3>
-    <button onclick="alert('Coming Soon')">Open Tool</button>
-  </div>
-
+<div class="box">
+  <h2>Age Calculator</h2>
+  <input type="date" id="dob">
+  <button onclick="calcAge()">Calculate</button>
+  <h3 id="result"></h3>
 </div>
 
-<footer>
-  © 2026 Smart Tools Hub | All Rights Reserved
-</footer>
+<script>
+function calcAge() {
+  let dob = document.getElementById("dob").value;
+  if(!dob){
+    document.getElementById("result").innerHTML = "Please select date!";
+    return;
+  }
+
+  let birthDate = new Date(dob);
+  let today = new Date();
+
+  let age = today.getFullYear() - birthDate.getFullYear();
+
+  document.getElementById("result").innerHTML =
+    "Your Age is: " + age + " years";
+}
+</script>
 
 </body>
 </html>
